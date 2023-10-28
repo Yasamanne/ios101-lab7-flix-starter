@@ -22,7 +22,12 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        // 1.
+        let movies = Movie.getMovies(forKey: Movie.favoritesKey)
+        // 2.
+        self.favoriteMovies = movies
+        // 3.
+        tableView.reloadData()
         // Anything in the defer call is guaranteed to happen last
         defer {
             // Show the "Empty Favorites" label if there are no favorite movies
